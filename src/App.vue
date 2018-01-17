@@ -5,11 +5,11 @@
           <history-section></history-section>
           <section class="content-section">
               <map-section v-bind:visible="clientMap">
-                  Your data
+                  Your 
               </map-section>
               <searching-section></searching-section>
               <map-section v-bind:visible="searchedMap">
-                  Searched data
+                  Searched 
               </map-section>
           </section>
       </div>

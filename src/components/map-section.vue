@@ -5,30 +5,55 @@
                 <p> Nothing to show</p>
         </div>
         <div class="section-container" v-if="visible">
-            <div class="map-container"></div>
+<!--            <div class="map-container">-->
+                <gmap-map
+                    v-bind:center="center"
+                    v-bind:zoom="7"
+                    v-bind:options="mapStyle"
+                >
+                    <gmap-marker
+                      :key="index"
+                      v-for="(m, index) in markers"
+                      :position="m.position"
+                      :clickable="true"
+                      :draggable="true"
+                      @click="center=m.position"
+                    ></gmap-marker>
+                </gmap-map>
+<!--            </div>-->
             <div class="info-container">
                     <h3 class="info-title">
-                        <slot></slot>
+                        <slot></slot> data
                     </h3>
                     <p class="info-element">
-                        IP adress / URL: 
-                        <span></span>
+                        <slot></slot> IP adress / URL: 
+                        <span class="info-data"> 
+                            {{ userData.ip }} 
+                        </span>
                     </p>
                     <p class="info-element">
-                        Country: 
-                        <span></span>
+                        <slot></slot> country: 
+                        <span class="info-data"> 
+                            {{ userData.country_name }} 
+                        </span>
                     </p>
                     <p class="info-element">
-                        Region: 
-                        <span></span>
+                        <slot></slot> region: 
+                        <span class="info-data"> 
+                            {{ userData.region_name }} 
+                        </span>
                     </p>
                     <p class="info-element">
-                        City: 
-                        <span></span>
+                        <slot></slot> city: 
+                        <span class="info-data">
+                            {{ userData.city }} 
+                        </span>
                     </p>
                     <p class="info-element">
-                        Zip / postal code:
-                        <span></span>
+                        <slot></slot> zip / postal code:
+                        <span class="info-data">
+                            {{ userData.zip_code }} 
+                        </span>
                     </p>
             </div>
         </div>
@@ -38,11 +63,36 @@
 <script>
 
      export default {
+         data () {
+              return {
+                userData: {},
+                center: {lat: 51.1, lng: 17.0333},
+                markers: [{
+                  position: {lat: 51.1, lng: 17.0333}
+                }],
+                mapStyle: { 
+                    styles: [{
+                        "featureType": "all",
+                        "elementType": "all",
+                        "stylers": [
+                            {"saturation": -100},
+                            {"gamma": 0.5}
+                        ]
+                    }]
+                }
+              }
+         },
          props: {
             visible: {
                 type: Boolean,
                 required: true
             }
+         },
+         created() {
+             this.$http.get("http://freegeoip.net/json/").then(function(data) {
+                       console.log(data);
+                 this.userData = data.body;
+                       })                
          }
      }
      
@@ -61,25 +111,33 @@
     
     .section-container {
         width: 100%;
+        height: 100%;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
-        -webkit-box-pack: start;
+    /*    -webkit-box-pack: start;
         -ms-flex-pack: start;
-        justify-content: flex-start;
+        justify-content: flex-start;*/
     }
 
-    .map-container {
+   /* .map-container {
         width: 60%;
         height: 100%;
-        border-radius: 6px 0 0 6px;
+    }*/
+    
+    .vue-map-container {
+        width: 60%;
+        height: 100%;
     }
 
+    .vue-map {
+        border-radius: 6px 0 0 6px;
+    }
+    
     .info-container {
+        width: 39%;
         padding-top: 25px;
         padding-left: 30px;
-        color: #333;
-        font-size: 16px;
     }
 
     .info-title {
@@ -89,6 +147,16 @@
     
     .info-element {
         margin-top: 17px;
+        color: $color-main-font;
+        font-size: 14px;
+    }
+    
+    .info-data {
+        color: #b3b3b3;
+        font-size: 16px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        padding-left: 5px;
     }
 
     .map-placeholder-container {
