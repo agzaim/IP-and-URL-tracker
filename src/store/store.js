@@ -17,6 +17,7 @@ export const store = new Vuex.Store({
            userData: {},
            searchedData: {},
            searchList: [],
+//           input: "",
            visible: true
        },
        mutations: {

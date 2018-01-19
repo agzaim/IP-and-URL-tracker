@@ -41,10 +41,6 @@
          },
          data () {
               return {
-                /*center: {lat: 51.1, lng: 17.0333},
-                markers: [{
-                  position: {lat: 51.1, lng: 17.0333}
-                }],*/
                 mapStyle: { 
                     styles: [{
                         "featureType": "all",
@@ -66,7 +62,7 @@
     @import "../assets/styles/variables.scss";
     
     .vue-map-container {
-        width: 60%;
+        width: 58%;
         height: 100%;
     }
 

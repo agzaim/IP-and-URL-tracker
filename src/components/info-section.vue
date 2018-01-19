@@ -4,7 +4,7 @@
                 <slot></slot> data
             </h3>
             <p class="info-element">
-                IP adress / URL: 
+                IP adress: 
                 <span class="info-data"> 
                     {{ locationData.ip }} 
                 </span>
@@ -58,7 +58,7 @@
     
     
     .info-container {
-        width: 39%;
+        width: 42%;
         padding-top: 25px;
         padding-left: 30px;
     }

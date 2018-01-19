@@ -7,6 +7,7 @@
         <div class="search-container">
             <input class="search-box"
                    v-model="input"
+                   v-on:keyup.enter="searchLocation(input)"
                    placeholder="Please enter IP adress or URL">
             <button class="search-btn"
                     v-on:click="searchLocation(input)">
@@ -20,34 +21,27 @@
 <script>
 
     export default {
+       /*  computed: {
+            input() {
+                return this.$store.state.input;  
+            }
+         },*/
          data() {
             return {
                 input: "",
                 error: false,
-                regex1: RegExp(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/),
-                regex2: RegExp(/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/),
-                regex3: RegExp(/^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$/i)
+                regex: /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3})$|^((([a-zA-Z]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9]))$/
             }
          },
          methods: {    
             searchLocation(phrase) {
-                if(this.regex3.test(phrase)) {
-                console.log("Yeeee");
-                    } else {
-                        this.error = true;
-             console.log("dupa");
-            }
-                
-                
-                
-                
-         /*       if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(phrase)) {
-                    console.log("Yeeee");
-                    } else {
-                        this.error = true;
-             console.log("dupa");
-         }*/
-//               this.$store.dispatch('GET_SEARCHED_DATA', {input: phrase});       
+                if(this.regex.test(phrase)) {      
+                    this.$store.dispatch('GET_SEARCHED_DATA', {input: phrase});  
+                    this.input = "";
+                    this.error = false;
+                } else {
+                    this.error = true;
+                }        
             }
          }
      }
