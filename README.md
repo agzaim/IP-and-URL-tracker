@@ -1,18 +1,31 @@
-# adresses-tracker
+# IP and URLs tracker built with Vue.js and Vuex
 
-> A Vue.js project
+>It’s a fully responsive web app designed to track the location of servers by URL/IP address. A location is being displayed on a map. User can also see his own IP address and location. A full history of searches is accessable from a side box.
 
-## Build Setup
 
-``` bash
-# install dependencies
+### install dependencies
+```
 npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+### serve with hot reload at localhost:8080
+```
+npm run dev
+```
+
+
+## technologies
+* Vue.js
+* Vuex
+* SASS
+* Webpack
+
+
+
+
+
+
+
+
+

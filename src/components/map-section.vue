@@ -60,14 +60,22 @@
 <style lang="scss">
     
     @import "../assets/styles/variables.scss";
+    @import "../assets/styles/mixins.scss";
     
     .vue-map-container {
         width: 58%;
         height: 100%;
+        @include smallTablets {
+            width: 100%;
+            height: 300px;
+        }
     }
 
     .vue-map {
         border-radius: 6px 0 0 6px;
+        @include smallTablets {
+            border-radius: 6px 6px 0 0;
+        }
     }
     
 </style>

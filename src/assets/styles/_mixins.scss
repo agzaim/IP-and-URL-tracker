@@ -8,33 +8,22 @@
 }
 
 @mixin tablets {
-    @media screen and (max-width: 915px) {
+    @media screen and (max-width: 1024px) {
         @content;
     }
 }
 
-@mixin tabletsOnly {
-    @media screen and (max-width: 915px) and (min-width: 651px) {
-        @content;
-    }
-}
 
-@mixin mobiles {
+@mixin smallTablets {
     @media screen and (max-width: 650px) {
         @content;
     }
 }
 
 
-@mixin mediaHeader {
-    @media screen and (max-width: 1120px) {
+@mixin bigScreens {
+    @media screen and (min-width: 1824px) {
         @content;
     }
 }
  
-
-@mixin smallTablets {
-    @media screen and (max-width: 800px) {
-        @content;
-    }
-}

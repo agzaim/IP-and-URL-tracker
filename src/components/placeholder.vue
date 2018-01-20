@@ -4,14 +4,11 @@
     </div>
 </template>
 
-<script>
-      
-</script>
-
 
 <style lang="scss">
     
      @import "../assets/styles/variables.scss";
+     @import "../assets/styles/mixins.scss";
     
     .map-placeholder-container {
         display: -webkit-box;
@@ -30,6 +27,9 @@
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
+        @include smallTablets {
+            padding: 20px;
+        }
     }
     
 </style>

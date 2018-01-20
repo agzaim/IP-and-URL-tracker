@@ -1,7 +1,7 @@
 <template>
     <div class="info-container">
             <h3 class="info-title">
-                <slot></slot> data
+                <slot></slot> location
             </h3>
             <p class="info-element">
                 IP adress: 
@@ -61,6 +61,11 @@
         width: 42%;
         padding-top: 25px;
         padding-left: 30px;
+        @include smallTablets {
+            width: 100%;
+            height: auto;
+            padding-bottom: 25px;
+        }
     }
 
     .info-title {

@@ -4,8 +4,6 @@
             Last searches
         </h2>
         <ul class="search-list">
-<!--        <div class="history-container" -->
-<!--             v-for="search in searchList">-->
             <li class="list-element"
                 v-for="search in searchList"
                 v-on:click="loadingMap(search.input)">
@@ -20,7 +18,6 @@
                 </div>
             </li>
         </ul>
-<!--        </div>-->
     </section>
 </template>
 
@@ -52,8 +49,16 @@
         padding-right: 0;
         border: 1px solid #d6d6d6;
         border-radius: 6px;
-        /*height: 695px;
-        overflow: auto;*/
+         @include tablets {
+             width: 40%;
+             margin: 0 auto;
+             margin-top: 20px;
+        }
+         @include smallTablets {
+             width: 97%;
+             margin: 0 auto;
+             margin-top: 20px;
+        }
     }
 
     .history-section-title {
@@ -65,6 +70,9 @@
         list-style: none;
         height: 594px;
         overflow: auto;
+        @include tablets {
+            height: auto;
+        }
     }
     
     .list-element {

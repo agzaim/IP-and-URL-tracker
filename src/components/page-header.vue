@@ -7,23 +7,18 @@
                       IP and URL tracker
                   </h1>
                   <h3 class="header-description">
-                      Find out server location of all your favourite websites!
+                      Find out server locations of all your favourite websites!
                   </h3>
               </div>
           </div>
       </header>
 </template>
 
-<script>
-
-     export default {
-     }
-     
-</script>
 
 <style lang="scss">
     
      @import "../assets/styles/variables.scss";
+     @import "../assets/styles/mixins.scss";
       
     .header {
         background-color: #F0F0F0;
@@ -31,6 +26,9 @@
         height: 85px;
         margin-bottom: 20px;
         padding-top: 20px;
+        @include bigScreens {
+            height: 130px;
+        }
     }
     
      .header-container {
@@ -42,6 +40,9 @@
         -webkit-box-pack: start;
         -ms-flex-pack: start;
         justify-content: flex-start;
+         @include smallTablets {
+             width: 97%;
+        }
     }
     
     .header-title {

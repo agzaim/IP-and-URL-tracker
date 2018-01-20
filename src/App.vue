@@ -4,7 +4,7 @@
       <div class="content-container">
           <history-section></history-section>
           <section class="content-section">
-              <div class="map-section">
+              <div class="map-box">
                   <div class="section-container">
                       <map-section v-bind:locationData="userData">
                       </map-section>
@@ -14,7 +14,7 @@
                   </div>
               </div>
               <searching-section></searching-section>
-              <div class="map-section">
+              <div class="map-box">
                   <placeholder v-if="visible"></placeholder>
                   <div class="section-container" 
                        v-else>
@@ -71,6 +71,7 @@
 
 @import "./assets/styles/main.scss";
 @import "./assets/styles/variables.scss";
+@import "./assets/styles/mixins.scss";
     
     .content-container {
         width: 90%;
@@ -82,16 +83,33 @@
         -ms-flex-pack: justify;
         justify-content: space-between;
         padding-bottom: 30px;
+        @include tablets {
+            width: 100%;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: reverse;
+            -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;   
+        }
     }
     
     .content-section {
         width: 70%;
+        @include tablets {
+            width: 100%;
+        }
     }
     
-    .map-section {
+    .map-box {
         border: 1px solid $color-main-orange;
         border-radius: 6px;
         height: 300px;
+        @include tablets {
+            width: 97%;
+            margin: 0 auto;
+        }
+         @include smallTablets {
+             height: auto;
+        }
     }
     
     .section-container {
@@ -100,6 +118,9 @@
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
+        @include smallTablets {
+            display: block;
+        }
     }
         
 </style>

@@ -17,7 +17,6 @@ export const store = new Vuex.Store({
            userData: {},
            searchedData: {},
            searchList: [],
-//           input: "",
            visible: true
        },
        mutations: {
@@ -42,7 +41,9 @@ export const store = new Vuex.Store({
                 Vue.http.get("http://freegeoip.net/json/")
                     .then((response) => {
                        commit('SET_USER_DATA', response.data);
-                    })
+                    }, (err) => {
+                    console.log(err);
+                })
            },
            
            GET_SEARCHED_DATA: function ({commit}, userInput) {
@@ -53,7 +54,9 @@ export const store = new Vuex.Store({
                        commit('UPDATE_SEARCH_LIST', 
                               {input: userInput.input,
                                country: response.data.country_name});
-                    })
+                    }, (err) => {
+                    console.log(err);
+                })
            }
        }
 })
