@@ -1,0 +1,7 @@
+{
+  "name": "IP and URL tracker",
+  "description": "Simple Vue.js app",
+  "repository": "https://github.com/agzaim/IP-and-URL-tracker",
+  "keywords": ["node", "vue.js", "url"],
+  "image": "heroku/nodejs"
+}
