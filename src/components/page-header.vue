@@ -68,6 +68,7 @@
         margin-right: 10px;
         @include smallTablets {
              background-position: -3px 2px;
+             width: 57px;
         }
     }
     
