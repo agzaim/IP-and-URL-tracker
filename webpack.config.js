@@ -4,19 +4,12 @@ var webpack = require('webpack')
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    path: path.resolve(__dirname, '../docs/index.html'),
+    publicPath: '',
     filename: 'build.js'
   },
   module: {
-    rules: [
-      /*{
-        test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader'
-        ],
-      },   */   
+    rules: [   
       {
         test: /\.vue$/,
         loader: 'vue-loader',
