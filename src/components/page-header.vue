@@ -42,7 +42,7 @@
         justify-content: flex-start;
          @include smallTablets {
              width: 97%;
-        }
+         }
     }
     
     .header-title {
@@ -66,6 +66,9 @@
         height: 45px;
         width: 45px;
         margin-right: 10px;
+        @include smallTablets {
+             background-position: -3px 2px;
+        }
     }
     
 </style>
